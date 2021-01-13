@@ -7,9 +7,9 @@ const Records = ({ records, loading }) => {
     return <h2>Loading...</h2>
   }
   return (
-    <ListGroup className="mb-4">
+    <div className="mb-4">
     {records.map(record => (
-      <ListGroup.Item key={record.id}>
+      <div key={record.id}>
         <Table striped bordered hover size="md" className="mb-4">
           <thead>
             <tr>
@@ -87,10 +87,10 @@ const Records = ({ records, loading }) => {
             </tr>
           </tbody>
         </Table>
-      </ListGroup.Item>
+      </div>
     ))}
       
-    </ListGroup>
+    </div>
   );
 };
 
