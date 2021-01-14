@@ -23,7 +23,7 @@ function App() {
       setLoading(false);
     };
     getRecord();
-  }, [params]);
+  }, []);
 
   const indexOfLastRecord = page * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -43,7 +43,6 @@ function App() {
       }
     })
   }
-
 
 
   return (
