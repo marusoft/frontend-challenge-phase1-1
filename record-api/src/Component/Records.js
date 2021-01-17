@@ -27,6 +27,7 @@ const Records = ({ records, loading }) => {
           </thead>
 
           <tbody>
+          
             {records.map((record) => (
               <tr key={record.id}>
                 <td>{record.FirstName}</td>
