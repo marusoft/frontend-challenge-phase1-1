@@ -15,6 +15,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [filterValue, setFilterValue] = useState({});
   
+  
 
   const BASE_URL = "https://api.enye.tech/v1/challenge/records";
 
@@ -36,7 +37,16 @@ function App() {
 
   function handleSearchChange(e) {
     setSearchValue(e.target.value);
-    filterData(e.target.value);
+
+  }
+
+  function search(rows) {
+    const columns = rows[0] && Object.keys(rows[0]);
+    return rows.filter((row) =>
+      columns.some(
+        (column) => row[column].toString().toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+      )
+    );
   }
 
   function handleFilterChange(e) {
@@ -48,40 +58,24 @@ function App() {
     });
   }
 
-  // filter records by search text
-  const filterData = (value) => {
-    const lowercasedValue = value.toLowerCase().trim();
-    if (lowercasedValue === "") {
-      return setRecord(records);
-    }
-    else {
-      const filteredData = records.filter((record) => {
-        return Object.keys(record).some((key) =>
-          record[key].toString().toLowerCase().includes(lowercasedValue)
-        );
-      });
-      setRecord(filteredData);
-    }
-  };
-
   return (
     <Container className="my-4">
       <h1 className="mb-4">PATIENT RECORD</h1>
-      <SearchForm
+     <SearchForm
         searchValue={searchValue}
         handleSearchChange={handleSearchChange}
       />
 
-      <Filter
+     <Filter
         filterValue={filterValue}
         handleFilterChange={handleFilterChange}
-      />
+     />
       <Pagination
         recordsPerPage={recordsPerPage}
         totalRecords={records.length}
         paginate={paginate}
       />
-      <Records records={currentRecords} loading={loading} />
+      <Records records={search(currentRecords)}  loading={loading} />
     </Container>
   );
 }

@@ -8,9 +8,9 @@ const SearchForm = ({ searchValue, handleSearchChange }) => {
         <Form.Group as={Col}>
           <Form.Label>Search Record by Name</Form.Label>
           <Form.Control
-            onChange={handleSearchChange}
-            value={searchValue}
             type="text"
+            value={searchValue}
+            onChange={handleSearchChange}
           />
         </Form.Group>
       </Form.Row>

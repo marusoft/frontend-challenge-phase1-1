@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 const Filter = ({ filterValue, handleFiterChange }) => {
   return (
     <Form>
-    Filter By:
+      Filter By:
       <div className="mb-3">
         <Form.Check
           inline
